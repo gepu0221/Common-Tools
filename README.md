@@ -123,3 +123,30 @@ passwd name
    git merge master
    git pull origin dev
    ```
+## FFmpeg
+
+1. 查看版本
+
+   ```
+   ffmpeg -version
+   ```
+
+2. 截取动图
+
+   ```
+   ffmpeg -i video.mp4 -s 1920*1080 -r 25 res.gif
+   ```
+
+3. Convert MP4 VersionISO Media v1 转换为 v2
+
+   ```
+   ffmpeg -i out.mp4 -c copy -map 0 -brand mp42 out2.mp4
+   ```
+
+3. rescale 视频
+
+   ```
+   ffmpeg -i orig.mp4 -vf scale=640:480:flags=bicubic -c:v libx264  -crf 18 output.mp4
+   ```
+
+crf 是控制质量的，常用18，crf越小编码质量越高，18大致是视觉无损，要求再高的话就降到10，再往下降的话输出视频的体积就会显著增大了
